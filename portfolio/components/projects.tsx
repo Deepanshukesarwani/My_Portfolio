@@ -74,11 +74,13 @@ export function Projects() {
 
 function ProjectCard({ project }: { project: (typeof projects)[number] }) {
   return (
-    <a
+    <motion.a
+      whileHover={{ scale: 1.02, borderColor: "#2F72C0" }}
+      transition={{ duration: 0.3 }}
       href={project.link || project.liveUrl || "#"}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex h-full flex-col rounded-xl border border-neutral-800 bg-neutral-900/50 p-5 transition-all duration-300 hover:border-neutral-700 hover:bg-neutral-900/80 sm:p-6"
+      className="group flex h-full flex-col rounded-xl border border-neutral-800 bg-accent/80 p-5 sm:p-6"
     >
       {/* Title & Links */}
       <div className="flex items-start justify-between gap-2">
@@ -111,6 +113,6 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
           </span>
         ))}
       </div>
-    </a>
+    </motion.a>
   );
 }

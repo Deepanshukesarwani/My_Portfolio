@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { experiences } from "@/lib/data";
 import { ExternalLink } from "lucide-react";
+import { useRef } from "react";
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -47,6 +48,18 @@ function getTypeLabel(type: "current" | "past" | "internship") {
 }
 
 export function Experience() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
+
+  const scrollY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <section className="w-full py-16 md:py-24">
       <motion.div
@@ -65,6 +78,7 @@ export function Experience() {
       </motion.div>
 
       <motion.div
+        ref={containerRef}
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -72,7 +86,11 @@ export function Experience() {
         className="relative mt-10 space-y-0"
       >
         {/* Timeline line */}
-        <div className="absolute left-[19px] top-2 bottom-2 w-px bg-neutral-800 md:left-[23px]" />
+        <div className="absolute left-[19px] top-0 bottom-0 w-px bg-neutral-800 md:left-[23px]" />
+        <motion.div
+           style={{ scaleY: scrollY, originY: 0 }}
+          className="absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 md:left-[23px]"
+        />
 
         {experiences.map((exp, index) => (
           <motion.div
@@ -81,22 +99,38 @@ export function Experience() {
             className="relative pl-12 pb-10 last:pb-0 md:pl-14"
           >
             {/* Timeline dot */}
-            <div className="absolute left-[15px] top-1.5 h-[10px] w-[10px] rounded-full border-2 border-neutral-700 bg-neutral-900 md:left-[19px]" />
+            <div className="absolute left-[15px] top-1.5 h-[10px] w-[10px] rounded-full border-2 border-neutral-700 bg-neutral-900 md:left-[19px] z-10" />
 
             {/* Card */}
-            <div className="group rounded-xl border border-neutral-800 bg-neutral-900/50 p-5 transition-all duration-300 hover:border-neutral-700 hover:bg-neutral-900/80 sm:p-6">
+            <motion.div
+              whileHover={{ scale: 1.02, borderColor: "#2F72C0" }}
+              transition={{ duration: 0.3 }}
+              className="group rounded-xl border border-neutral-800 bg-accent/80 p-5 sm:p-6"
+            >
               {/* Header */}
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-base font-semibold text-white sm:text-lg">
-                      {exp.role}
-                    </h3>
-                    <span className="text-neutral-500">•</span>
-                    <span className="text-sm font-medium text-neutral-300 sm:text-base">
-                      {exp.company}
-                    </span>
-                  </div>
+                <div className="flex-1 flex items-start gap-3">
+                  {/* Company Logo */}
+                  {exp.logo && (
+                    <div className="flex-shrink-0">
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="h-12 w-12 rounded-lg object-cover border border-neutral-700"
+                      />
+                    </div>
+                  )}
+                  
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-base font-semibold text-white sm:text-lg">
+                        {exp.role}
+                      </h3>
+                      <span className="text-neutral-500">•</span>
+                      <span className="text-sm font-medium text-neutral-300 sm:text-base">
+                        {exp.company}
+                      </span>
+                    </div>
 
                   {/* Links */}
                   {exp.links && exp.links.length > 0 && (
@@ -115,6 +149,7 @@ export function Experience() {
                       ))}
                     </div>
                   )}
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -147,7 +182,7 @@ export function Experience() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </motion.div>

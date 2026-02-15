@@ -102,8 +102,8 @@ export const experiences: Experience[] = [
       "Solana",
       "Ethereum",
     ],
-    links: [{ label: "Company Website", url: "https://example.com" }],
-    logo: "/logos/m0.png",
+    links: [{ label: "Company Website", url: "https://www.m0.org/" }],
+    logo: "/m0.jpg",
   },
   {
     company: "GradHub",
@@ -120,8 +120,8 @@ export const experiences: Experience[] = [
       "• Implemented modern development patterns and best practices across the codebase",
 
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Mantine", "Redux Toolkit", "Storybook"],
-    links: [{ label: "Website", url: "hhttps://www.linkedin.com/company/gradhubindia/about/" }],
-    logo: "/logos/startup.png",
+    links: [{ label: "Website", url: "https://www.linkedin.com/company/gradhubindia/" }],
+    logo: "/gradhubindia_logo.jpg",
   },
   {
     company: "ResoluteAI Software",
@@ -137,7 +137,7 @@ export const experiences: Experience[] = [
       "• Optimized application architecture resulting in improved load times and user experience",
     techStack: ["React", "TypeScript", "Redux Toolkit", "Material-UI"],
     links: [],
-    logo: "/logos/resoluteai.png",
+    logo: "/resoluteAi.jpg",
   },
   {
     company: "Blockchain Research Lab (AKGEC)",
@@ -153,7 +153,7 @@ export const experiences: Experience[] = [
       "• Mentored team members on frontend development best practices and modern web technologies",
     techStack: ["React", "TypeScript", "Angular", "Node.js"],
     links: [{ label: "Website", url: "https://brlakgec.com" }],
-    logo: "/logos/brl.png",
+    logo: "/brl.jpg",
   },
 ];
 
@@ -168,31 +168,35 @@ export const projects: Project[] = [
       "MetaCreate gives creators and developers the tools to generate content faster, smarter, and at a scale previously impossible. Every idea becomes a living, cinematic output — instantly, intuitively, and professionally.",
     techStack: ["Next.js", "TypeScript", "Nest.js", "Atoms-jotai", "Redis", "Prisma", "Tanstack Query", "Tailwind CSS", "Framer Motion","Shadcn/ui", "Phantom Wallet Adapter", "MetaMask Wallet Adapter","Posthog","OpenAI API"],
     category: "client",
-    link: "https://metacreate.ai/",
+    liveUrl: "https://metacreate.ai/",
   },
-  {
-    title: "Generative World (GenWorld)",
-    description:
-      "Developer productivity dashboard with CI/CD monitoring, code analytics, and team performance metrics.",
-    techStack: ["React", "Node.js", "GraphQL", "Docker", "MongoDB"],
-    category: "client",
-    link: "https://forceful-companies-550444.framer.app/",
-  },
-  {
-    title: "E-Commerce Platform",
-    description:
-      "Full-featured e-commerce platform with secure payments, inventory management, and analytics.",
-    techStack: ["Next.js", "Stripe", "Prisma", "Tailwind CSS", "PostgreSQL"],
-    category: "client",
-    link: "https://github.com/yourusername/ecommerce",
-    liveUrl: "https://example.com",
-  },
-  {
-    title: "Task Automation CLI",
-    description:
-      "CLI tool for automating repetitive development workflows with extensible plugin support.",
-    techStack: ["Rust", "CLI", "TOML", "GitHub API"],
-    category: "personal",
-    link: "https://github.com/yourusername/task-cli",
-  },
+{
+  title: "Generative World (GenWorld)",
+  description:
+   "GenWorld\n\n" +
+"AI infrastructure for 3D creation and ownership. Generate 3D assets and games from prompts, mint as NFTs, and monetize through integrated marketplace.\n\n" +
+"Built with AI generation, Web3 ownership, and creator economy tools.",
+  techStack: ["Next.js", "TypeScript", "Nest.js", "Atoms-jotai", "Redis", "Prisma", "Tanstack Query", "Tailwind CSS", "Framer Motion","Shadcn/ui", "Phantom Wallet Adapter", "MetaMask Wallet Adapter","Posthog","OpenAI API"],
+  category: "client",
+  liveUrl: "https://forceful-companies-550444.framer.app/",
+},
+{
+  title: "HealthCare+ - Modern Healthcare Appointment Booking",
+  description:
+   "Healthcare appointment booking app with Next.js 16, React 19, and TypeScript.\n\n" +
+"• Doctor search with advanced filtering\n" +
+"• AI-powered symptom matching\n" +
+"• Appointment booking and management\n" +
+"• Dark mode and responsive design",
+  techStack: ["Next.js", "Shadcn/ui", "Tailwind CSS", "Framer Motion", "TypeScript", "React", "OpenAI API"],
+  category: "client",
+  liveUrl: "https://health-care-gamma-six.vercel.app/",
+},
+{
+  title: "Automated LinkedIn Message Generator",
+  description: "AI-powered campaign management system for generating personalized LinkedIn outreach messages. Automates message creation with customizable templates and campaign tracking.",
+  techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+  category: "personal",
+  liveUrl: "https://automated-linkedin-message-generator.vercel.app"
+}
 ];
