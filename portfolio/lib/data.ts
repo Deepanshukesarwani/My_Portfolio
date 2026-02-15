@@ -163,20 +163,20 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
-    title: "Project Alpha",
+    title: "Meta-Create",
     description:
-      "Real-time collaboration platform featuring WebSocket-based communication and rich-text editing.",
-    techStack: ["Next.js", "TypeScript", "WebSockets", "PostgreSQL", "Redis"],
-    category: "personal",
-    link: "https://github.com/yourusername/project-alpha",
+      "MetaCreate gives creators and developers the tools to generate content faster, smarter, and at a scale previously impossible. Every idea becomes a living, cinematic output — instantly, intuitively, and professionally.",
+    techStack: ["Next.js", "TypeScript", "Nest.js", "Atoms-jotai", "Redis", "Prisma", "Tanstack Query", "Tailwind CSS", "Framer Motion","Shadcn/ui", "Phantom Wallet Adapter", "MetaMask Wallet Adapter","Posthog","OpenAI API"],
+    category: "client",
+    link: "https://metacreate.ai/",
   },
   {
-    title: "DevTools Dashboard",
+    title: "Generative World (GenWorld)",
     description:
       "Developer productivity dashboard with CI/CD monitoring, code analytics, and team performance metrics.",
     techStack: ["React", "Node.js", "GraphQL", "Docker", "MongoDB"],
-    category: "personal",
-    link: "https://github.com/yourusername/devtools-dashboard",
+    category: "client",
+    link: "https://forceful-companies-550444.framer.app/",
   },
   {
     title: "E-Commerce Platform",

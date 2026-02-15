@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
 import { ExternalLink, Github } from "lucide-react";
 
@@ -23,19 +22,9 @@ const cardVariants = {
     y: 0,
     transition: { duration: 0.4, ease: "easeOut" as const },
   },
-  exit: {
-    opacity: 0,
-    y: -10,
-    transition: { duration: 0.2 },
-  },
 };
 
-type Category = "personal" | "client";
-
 export function Projects() {
-  const [activeTab, setActiveTab] = useState<Category>("personal");
-
-  const filteredProjects = projects.filter((p) => p.category === activeTab);
 
   return (
     <section className="w-full py-16 md:py-24">
@@ -46,7 +35,7 @@ export function Projects() {
         transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-          Projects
+          Personal and Client Works
         </h2>
         <p className="mt-2 text-sm text-neutral-400 sm:text-base">
           A collection of my work spanning personal experiments and client
@@ -54,65 +43,31 @@ export function Projects() {
         </p>
       </motion.div>
 
-      {/* Tabs */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.2 }}
-        className="mt-8 flex gap-1 rounded-lg border border-neutral-800 bg-neutral-900/50 p-1 w-fit"
-      >
-        {(
-          [
-            { key: "personal" as const, label: "Personal Projects" },
-            { key: "client" as const, label: "Client Work" },
-          ] as const
-        ).map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key)}
-            className={`relative rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-              activeTab === tab.key
-                ? "bg-neutral-800 text-white"
-                : "text-neutral-400 hover:text-neutral-200"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </motion.div>
-
       {/* Project Cards */}
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        <AnimatePresence mode="wait">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="mt-8 grid gap-4 sm:grid-cols-2"
+      >
+        {projects.map((project, index) => (
           <motion.div
-            key={activeTab}
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="contents"
+            key={`${project.title}-${index}`}
+            variants={cardVariants}
           >
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={`${project.title}-${index}`}
-                variants={cardVariants}
-                layout
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
+            <ProjectCard project={project} />
           </motion.div>
-        </AnimatePresence>
+        ))}
 
-        {filteredProjects.length === 0 && (
+        {projects.length === 0 && (
           <div className="col-span-2 flex h-40 items-center justify-center rounded-xl border border-dashed border-neutral-800">
             <p className="text-sm text-neutral-500">
-              No projects in this category yet.
+              No projects yet.
             </p>
           </div>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 }
