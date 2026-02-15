@@ -35,7 +35,11 @@ export function Hero() {
         className="flex flex-col-reverse items-center gap-10 md:flex-row md:items-start md:justify-between"
       >
         {/* Text Content */}
-        <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
+        <motion.div
+          className="flex flex-1 flex-col items-center text-center md:items-start md:text-left"
+          whileHover={{ scale: 1.03 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
           <motion.div variants={itemVariants}>
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Hi, I&apos;m{" "}
@@ -82,13 +86,18 @@ export function Hero() {
               </a>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Profile Image */}
-        <motion.div
-          variants={itemVariants}
-          className="relative flex-shrink-0"
-        >
+        <motion.div variants={itemVariants} className="relative flex-shrink-0">
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
           <div className="relative h-48 w-48 overflow-hidden rounded-2xl border-2 border-neutral-800 sm:h-56 sm:w-56 lg:h-64 lg:w-64">
             <Image
               src={personalInfo.profileImage}
@@ -101,6 +110,7 @@ export function Hero() {
           </div>
           {/* Decorative glow */}
           <div className="absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-br from-neutral-700/20 to-transparent blur-xl" />
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
