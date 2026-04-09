@@ -40,7 +40,7 @@ export const personalInfo = {
   location: "India",
   title: "Full Stack Developer",
   bio: "Passionate Full Stack Developer 🚀 specializing in modern web applications, AI-powered solutions, and Web3 systems. Experienced in frontend engineering, backend architecture, and building intelligent agents using LLMs and vector databases. I turn ideas into scalable, production-ready products.",
-  profileImage: "/profile.jpeg", // Place your profile image in /public
+  profileImage: "/ProfileImage2.jpeg", // Place your profile image in /public
 };
 
 // ============================================================================
