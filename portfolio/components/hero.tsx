@@ -24,7 +24,6 @@ const itemVariants = {
     transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
-
 export function Hero() {
   return (
     <section className="relative w-full py-16 md:py-24">
@@ -63,7 +62,6 @@ export function Hero() {
           >
             {personalInfo.bio}
           </motion.p>
-
           {/* Social Links */}
           <motion.div
             variants={itemVariants}
