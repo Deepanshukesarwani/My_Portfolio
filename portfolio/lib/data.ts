@@ -181,6 +181,19 @@ export const projects: Project[] = [
   liveUrl: "https://forceful-companies-550444.framer.app/",
 },
 {
+  title: "Real-time Notification System (SSE)",
+  description:
+    "Monorepo prototype demonstrating real-time notification state updates using Server-Sent Events.\n\n" +
+    "• Admin posts a notification from an /admin page\n" +
+    "• Backend stores it in memory and broadcasts to all connected SSE clients\n" +
+    "• Connected /user pages receive notifications instantly\n" +
+    "• Users can mark notifications as seen, with state broadcast live to all other connected clients",
+  techStack: ["Next.js", "Express.js", "Tailwind CSS", "Shadcn/ui", "Server-Sent Events", "npm workspaces"],
+  category: "personal",
+  link: "https://github.com/Deepanshukesarwani/real-time-notification-SSE",
+  liveUrl: "https://real-time-notification-sse-frontend.vercel.app/",
+},
+{
   title: "HealthCare+ - Modern Healthcare Appointment Booking",
   description:
    "Healthcare appointment booking app with Next.js 16, React 19, and TypeScript.\n\n" +
